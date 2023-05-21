@@ -1,14 +1,18 @@
 public class Remote {
     
-    Object [] buttons = new Object [5];  // 5個按鈕，實際上不應該設定成Object class，這邊是示範
+    Controler [] buttons = new Controler [5];  // 5個按鈕，實際上不應該設定成Object class，這邊是示範
     
+    void SetButton( int buttonId, Controler driver ) {
+        buttons[buttonId] = driver ;
+    }
+
     /**
      * 當有某個按鈕被按的時候會呼叫這個方法，
      * 必須執行對應的裝置
      * @param buttonId 紀錄哪個button被按
      */
-    void buttonClicked(int buttonId) {
-        
+    void buttonClicked( int buttonId ) {
+        buttons[buttonId].execute() ;
     }
     
     /**
@@ -16,7 +20,7 @@ public class Remote {
      */
     void pressAllButtons() {
         for ( int i = 0; i < buttons.length; i++ ) {
-            buttonClicked(i);
+            buttonClicked(i) ;
         }
     }
 }
