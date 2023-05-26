@@ -1,9 +1,9 @@
 public class Remote {
     
-    Controler [] buttons = new Controler [5];  // 5個按鈕，實際上不應該設定成Object class，這邊是示範
+    Controler [] buttons = new Controler [5] ;  // 5個按鈕
     
     void SetButton( int buttonId, Controler driver ) {
-        buttons[buttonId] = driver ;
+        if ( buttonId < 5 && buttonId >= 0 ) buttons[buttonId] = driver ;
     }
 
     /**
@@ -12,7 +12,7 @@ public class Remote {
      * @param buttonId 紀錄哪個button被按
      */
     void buttonClicked( int buttonId ) {
-        buttons[buttonId].execute() ;
+        if ( buttons[buttonId] instanceof Controler) buttons[buttonId].execute() ;
     }
     
     /**
